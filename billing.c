@@ -113,13 +113,13 @@ int main(){
                }
                else if(1335<payment<=7420){
                    balance1=payment-1335;
-                   units=1335/89;
+                   units=(1335/89);
                    units+=(balance1/212);
                }
                else if(payment>7420){
                    balance1=payment-(7420+1335);
                    units=(1335/89) + (7420/212);
-                   units+=balance1/249;
+                   units+=(balance1/249);
                }
                else{
                    printf("unable to continue");
@@ -130,16 +130,17 @@ int main(){
                 units=difference;
                 int paymentfordifference=difference*89;
                 int balance=payment-paymentfordifference;
+                units+=(balance/212);
 
             }
             else if(15<prev<=50){
                 int difference=35-prev;
                 if(difference>=0){
-                    int moneyfordifference=difference*89;
+                    int moneyfordifference=difference*212;
                     if(payment>moneyfordifference){
                         units=difference;
                         int balance=payment-moneyfordifference;
-                        units+=(balance/212);
+                        units+=(balance/249);
                 }
                 }
                 else{
@@ -153,7 +154,7 @@ int main(){
                         }
                     }
                     else if(money>7420){
-                        int difference=prev-35;
+                        int difference=prev-50;
                         units=difference;
                         int moneyfordifference=difference
                     }
