@@ -186,7 +186,6 @@ int main(){
                     }
                 }
             }
-
     }
 
     else if(strcmp(category,'telecom towers')){
