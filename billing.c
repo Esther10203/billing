@@ -71,6 +71,9 @@ int main(){
         strcpy(cs[i].cashpower,tok);
         tok=strtok(NULL,",");
     }
+    for(i=0;i<n;i++){
+        printf("%s",cs[i].customerFirstname);
+    }
     FILE *currentMonthData=fopen("currentmonth.csv","r+");
     if(currentMonthData==NULL){
         printf("unable to open current month file");
@@ -94,7 +97,8 @@ int main(){
     while(strcmp(cs[i].cashpower,cashpowernumber)){
         strcpy(category,cs[i].customercategory);
         while(cs[i].cashpower==csm[j].cashpowernumber){
-            prev=csm[i].units;
+            prev=strtol(csm[i].units,NULL,10);
+            // prev=csm[i].units;
             j++;
         }
         i++;
@@ -218,6 +222,6 @@ int main(){
     else{
         printf("uncategorized client");
     }
-
+printf("units: %d",units);
     return units;
     }
