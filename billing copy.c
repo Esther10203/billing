@@ -44,10 +44,6 @@ int main(){
     if(customers==NULL){
         printf("unable to open file");
     }
-    FILE *currentMonthData=fopen("currentmonth.csv","r+");
-    if(currentMonthData==NULL){
-        printf("unable to open current month file");
-    }
     int i=0;
     int j=0;
     int k=0;
@@ -61,91 +57,43 @@ int main(){
     struct customer cs[n];
     struct currentMonth csm[n];
 
-    // for(i=0;i<n;i++){
-        
-    //     // tok=fscanf(customers,customersdata->customerFirstname,customersdata->customerLastname,customersdata->customercategory,customersdata->cashpower);
-    //     // cs[i].customerFirstName=fgets
-        
-    //     tok=strtok(fgets(customersdata,sizeof(customersdata),customers),",");
-    //     printf("%s", tok);
-    //     // tok=
-    // }
+    for(i=0;i<n;i++){
         char *tok;
-        char customersdata[1000];
-        int field;
-        int z = 0;
-    while(fgets(customersdata,sizeof(customersdata),customers) != NULL){
-            tok = strtok(customersdata, ",");
-            field = 0;
-            while(tok != NULL){
-                if(field == 0){
-                    strcpy(cs[z].customerFirstname,tok);
-                    tok=strtok(NULL,",");
-                    // printf("%s\n", tok);
-                }
-                else if(field == 1){
-                    strcpy(cs[z].customerLastname,tok);
-                    tok=strtok(NULL,",");
-                    // printf("%s\n", tok);
-                }
-                else if(field == 2){
-                    strcpy(cs[z].customercategory,tok);
-                    tok=strtok(NULL,",");
-                    // printf("%s\n", tok);
-                }
-                else{
-                    strcpy(cs[z].cashpower,tok);
-                    tok=strtok(NULL,",");
-                    // printf("%s\n", tok);
-                }
-                field++;
-            }
-            z++;
+        struct customer *customersdata=(struct customer*)calloc(sizeof(struct customer),50);
+        // tok=fscanf(customers,customersdata->customerFirstname,customersdata->customerLastname,customersdata->customercategory,customersdata->cashpower);
+        // cs[i].customerFirstName=fgets
+        tok=strtok(fgets(customersdata,sizeof(customersdata),customers),",");
+        strcpy(cs[i].customerFirstname,tok);
+        tok=strtok(NULL,",");
+        strcpy(cs[i].customerLastname,tok);
+        tok=strtok(NULL,",");
+        strcpy(cs[i].customercategory,tok);
+        tok=strtok(NULL,",");
+        strcpy(cs[i].cashpower,tok);
+        tok=strtok(NULL,",");
     }
-    // printf("woeoe");
-    // for(i=0;i<n;i++){
-        // char *tok;
+    // printf("you payment is %d",payment);
+    for(i=0;i<n;i++){
+        printf(" kekekeke");
+    }
+    FILE *currentMonthData=fopen("currentmonth.csv","r+");
+    if(currentMonthData==NULL){
+        printf("unable to open current month file");
+    }
+    for(i=0;i<n;i++){
+        char *tok;
         char customersmonthlydata[1000];
         // cs[i].customerFirstName=fgets
-        i=0;
-        while(fgets(customersmonthlydata,1000,currentMonthData)!=NULL){
-            int field=0;
-            tok=strtok(customersmonthlydata,",");
-            while(tok!=NULL){
-                // printf("%s\t", tok);
-                // tok = strtok(NULL, ",");
-                // printf("%s\t", tok);
-                // tok = strtok(NULL, ",");
-                if(field==0){
-                    strcpy(csm[i].customerNames,tok);
-                    printf("%s \n", csm[i].customerNames);
-                    tok=strtok(NULL,",");
-                }
-                else if(field==1){
-                    strcpy(csm[i].cashpowernumber,tok);
-                    printf("power number: %s\n", csm[i].cashpowernumber);
-                    tok=strtok(NULL,",");
-                }
-                else if(field==2){
-                    strcpy(csm[i].units,tok);
-                    printf("units: %s\n", tok);
-                    tok=strtok(NULL,",");
-                }
-                else{
-                    printf("dkflsjfdks");
-                    csm[i].date=tok;
-                    printf("date %s\n", tok);
-                    tok=strtok(NULL,",");
-                }
-                strtok(NULL, ",");
-                field++;
-            }
-                i++;
-        }
-        
-        
-       
-    // }
+        tok=strtok(fgets(customersmonthlydata,sizeof(customersmonthlydata),currentMonthData),",");
+        strcpy(csm[i].customerNames,tok);
+        tok=strtok(NULL,",");
+        strcpy(csm[i].cashpowernumber,tok);
+        tok=strtok(NULL,",");
+        strcpy(csm[i].units,tok);
+        tok=strtok(NULL,",");
+        csm[i].date=tok;
+        tok=strtok(NULL,",");
+    }
     i=0;
     
     while(strcmp(cs[i].cashpower,cashpowernumber)){
@@ -156,8 +104,9 @@ int main(){
             j++;
         }
         i++;
-
     }
+
+
 
     // calculate the units
 
@@ -275,6 +224,6 @@ int main(){
     else{
         printf("uncategorized client");
     }
-    printf("units: %d",units);
+printf("units: %d",units);
     return units;
     }
