@@ -103,6 +103,8 @@ int main(){
             }
             z++;
     }
+    // i=0;
+    // printf("%s %s %s %s\n",cs[i].customerFirstname,cs[i].customerLastname,cs[i].customercategory,cs[i].cashpower);
     // printf("woeoe");
     // for(i=0;i<n;i++){
         // char *tok;
@@ -126,22 +128,51 @@ int main(){
                 tok = strtok(NULL, ",");
                 field++;
             }
-            printf("%s %s %s \n", csm[i].customerNames, csm[i].cashpowernumber, csm[i].units);
+            // printf("%s %s %s \n", csm[i].customerNames, csm[i].cashpowernumber, csm[i].units);
             i++;
         }
         
         
        
     // }
-    i=0;
+    // i=0;
     // while(cashpowernumber!=NULL){
-        if(strcmp(cs[i].cashpower,cashpowernumber) == 0){
+
+        // for(i=0;i<n;i++){
+        //     printf("%s %s %s %s\n",cs[i].customerFirstname,cs[i].customerLastname,cs[i].customercategory,cs[i].cashpower);
+        // }
+        int compare=0;
+        // for(i=0;i<50;i++){
+        //     // printf("cashpower: %s customer: %s \n",cashpowernumber,cs[i].cashpower);
+        //     // printf("adfadfadfafgh %s \n");
+        //     if(strcmp(cs[i].cashpower,cashpowernumber)){
+        //         compare=0;
+        //     }
+        //     else{
+        //         compare==1;
+        //     }
+        // }
+        // printf("cmp %d",compare);
+        for(int m=0;m<50;m++){
+            if(strcmp(cs[m].cashpower,cashpowernumber)==0){
+                compare=0;
+                printf("%d",compare);
+                return compare;
+            }
+            else{
+                compare=1;
+            }
+        }
+        if(compare == 0){
+            // printf("cashpower: %s",cs[i].cashpower);
+            // printf("cashpowernumber: %s",cashpowernumber);
+            // printf("compare: %d",compare);
             strcpy(category,cs[i].customercategory);
             printf("%s",category);
-            for(i=0;i<n;i++){
+            for(i=0;i<1;i++){
                 for(j=0;j<n;j++){
                     if(strcmp(cs[i].cashpower,csm[j].cashpowernumber)){
-                    // prev=strtol(csm[i].units,NULL,10);
+                    prev=strtol(csm[i].units,NULL,10);
                     // printf("%s",strtol(csm[i].units,NULL,10));
                     // printf("%s",csm[i].units);
                 }
@@ -154,6 +185,7 @@ int main(){
         else{
             printf("invalid meter number");
         }
+        
     // }
     
             // printf("%d",prev);
