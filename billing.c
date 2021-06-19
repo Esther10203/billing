@@ -12,15 +12,15 @@ struct customer{
     struct currentMonth{
         char customerNames[1000];
         char cashpowernumber[15];
-        char units[10];
-        char *date;
+        char units[100];
+        // char *date;
     }; 
 
     struct allTransactions{
         char customerNames[1000];
         char cashpowernumber[15];
-        char units[10];
-        char *date;
+        char units[100];
+        // char *date;
     };
 
 
@@ -28,7 +28,8 @@ int main(){
     int payment;
     char cashpowernumber[15];
     int token;
-    char *category;
+    // char *category;
+    char category[100];
     int prev;
     int units;
 
@@ -118,25 +119,26 @@ int main(){
                 // tok = strtok(NULL, ",");
                 if(field==0){
                     strcpy(csm[i].customerNames,tok);
-                    printf("%s \n", csm[i].customerNames);
+                    // printf("%s \n", csm[i].customerNames);
                     tok=strtok(NULL,",");
                 }
                 else if(field==1){
                     strcpy(csm[i].cashpowernumber,tok);
-                    printf("power number: %s\n", csm[i].cashpowernumber);
+                    // printf("power number: %s\n", csm[i].cashpowernumber);
                     tok=strtok(NULL,",");
                 }
-                else if(field==2){
+                else{
                     strcpy(csm[i].units,tok);
                     printf("units: %s\n", tok);
                     tok=strtok(NULL,",");
                 }
-                else{
-                    printf("dkflsjfdks");
-                    csm[i].date=tok;
-                    printf("date %s\n", tok);
-                    tok=strtok(NULL,",");
-                }
+                
+                // else{
+                //     printf("dkflsjfdks");
+                //     csm[i].date=tok;
+                //     printf("date %s\n", tok);
+                //     tok=strtok(NULL,",");
+                // }
                 strtok(NULL, ",");
                 field++;
             }
@@ -147,24 +149,36 @@ int main(){
        
     // }
     i=0;
-    
-    while(strcmp(cs[i].cashpower,cashpowernumber)){
-        strcpy(category,cs[i].customercategory);
-        while(cs[i].cashpower==csm[j].cashpowernumber){
-            prev=strtol(csm[i].units,NULL,10);
-            // prev=csm[i].units;
-            j++;
+    while(cashpowernumber!=NULL){
+        if(strcmp(cs[i].cashpower,cashpowernumber)){
+            strcpy(category,cs[i].customercategory);
+            // printf("%s",category);
+            for(i=0;i<n;i++){
+                for(j=0;j<n;j++){
+                    if(strcmp(cs[i].cashpower,csm[j].cashpowernumber)){
+                    // prev=strtol(csm[i].units,NULL,10);
+                    // printf("%s",strtol(csm[i].units,NULL,10));
+                    // printf("%s",csm[i].units);
+                }
+                }
+                
+                // j++;
+            }
+            // i++;
         }
-        i++;
-
+        else{
+            printf("invalid meter number");
+        }
     }
+    
+            // printf("%d",prev);
 
     // calculate the units
 
 
     
 
-        if(category="Residential"){
+        if(strcmp(category,"Residential")){
             if(prev==0){
                if(payment<=1335){
                    units=payment/89;
